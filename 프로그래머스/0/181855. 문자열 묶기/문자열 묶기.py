@@ -7,5 +7,4 @@ def solution(strArr):
         else:
             count_dict[length] = 1  
     
-    #return count_dict
     return max(count_dict.values())

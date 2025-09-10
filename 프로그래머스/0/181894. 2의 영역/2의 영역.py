@@ -11,6 +11,5 @@ def solution(arr):
     if len(result) == 1: 
         return [arr[result[0]]]
     else: 
-        result.sort()
         return arr[result[0]: result[-1]+1]
     

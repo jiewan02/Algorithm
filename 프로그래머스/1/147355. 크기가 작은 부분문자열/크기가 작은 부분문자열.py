@@ -4,7 +4,7 @@ def solution(t, p):
     
     new_string = ''
     for i in range(len(t)): 
-        new_string = t[i:i+len(p)]
+        new_string = t[i:i+length]
         if int(new_string) <= int(p) and len(new_string) == length: 
             answer += 1
     return answer

@@ -1,9 +1,4 @@
 def solution(my_string, indices):
-    result = ''
     
-    for idx, s in enumerate(my_string): 
-        if idx not in indices: 
-            result += my_string[idx]
-    
-    return result
+    return ''.join(["" if i in indices else my_string[i] for i in range(len(my_string))])
 

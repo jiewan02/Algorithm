@@ -1,19 +1,12 @@
 def solution(babbling):
     truth = ['aya', 'ye', 'woo', 'ma']
-    result = 0
-    for babble in babbling: 
-        temp = babble
-        prev = ''
-        while temp:
-            matched = False
-            for i in truth:
-                if temp.startswith(i) and prev != i:
-                    prev = i
-                    temp = temp[len(i):]   # 발음 성공한 부분만큼 제거
-                    matched = True
-                    break
-            if not matched:
-                break
-        if not temp:  # 모두 다 처리됐으면 성공!
-            result += 1
-    return result
+    answer = 0
+    
+    for i in babbling: 
+        for j in truth: 
+            if j * 2 not in i: 
+                i = i.replace(j, ' ')
+        if len(i.strip()) == 0: 
+            answer += 1
+            
+    return answer

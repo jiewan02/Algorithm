@@ -1,9 +1,12 @@
 def solution(name, yearning, photo):
-    score_dict = {n:y for n, y in zip(name, yearning)}
-    answer = []
-    for group in photo:
-        total = 0
-        for person in group:
-            total += score_dict.get(person, 0)
-        answer.append(total)
-    return answer
+    dictionary = dict(zip(name, yearning))
+    
+    scores = []
+    
+    for i in photo: 
+        score = 0
+        for j in i: 
+            if j in dictionary: 
+                score += dictionary[j]
+        scores.append(score)
+    return scores

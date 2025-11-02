@@ -1,23 +1,12 @@
 def solution(schedules, timelogs, startday):
     answer = 0
-    for schedule, timelog in zip(schedules, timelogs):
-        t = schedule + 10 # 등록 마감 시간
-        
-        # 시간이 넘어가는 부분 해결
-        if t % 100 >= 60:
-            t += 40
-            
-        if startday <= 5:
-            ls = timelog[:6-startday]+timelog[8-startday:]
-        else:
-            ls = timelog[8-startday:][:5]
-        
-        a = 0
-        for l in ls:
-            if l <= t:
-                a += 1
-                
-        if a == 5:
-            answer += 1
-    
+    for i in range(len(schedules)):
+        for j in range(7):
+            if timelogs[i][j]>overtime(schedules[i]+10):
+                if (j+startday)%7 != 0 and (j+startday)%7<6:
+                    answer=answer-1
+                    break
+        answer+=1
     return answer
+def overtime(n):    
+    return n//100*100+((n%100)//60)*100+(n%100)%60
